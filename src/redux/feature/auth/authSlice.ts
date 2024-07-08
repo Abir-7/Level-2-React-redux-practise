@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../../store";
 
 export interface IAuthState {
   user: null | object;
@@ -27,4 +28,6 @@ export const authSlice = createSlice({
 });
 
 export const { setUser, logout } = authSlice.actions;
+export const userToken = (state: RootState) => state.auth.token;
+export const userInfo = (state: RootState) => state.auth.user;
 export default authSlice.reducer;

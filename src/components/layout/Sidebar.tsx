@@ -4,6 +4,8 @@ import { sidebarItemGenerator } from "../../utils/sidebarItemGenerator";
 import { adminOption } from "../../routes/admin.route";
 import { facultyOption } from "../../routes/faculty.route";
 import { studentOption } from "../../routes/student.route";
+import { useAppSelector } from "../../redux/hooks";
+import { userInfo } from "../../redux/feature/auth/authSlice";
 
 const userRole = {
   ADMIN: "admin",
@@ -13,7 +15,8 @@ const userRole = {
 
 const { Sider } = Layout;
 const Sidebar = () => {
-  const role = userRole.STUDENT;
+  const userData = useAppSelector(userInfo);
+  const role = userData?.role;
 
   let sideBarItems: MenuProps["items"];
 
